@@ -10,8 +10,8 @@ namespace ManagmentSystem.Models
     {
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Role> Roles { get; set; }
-
     }
+
     public class DBInitializer : DropCreateDatabaseAlways<CustomerContext>
     {
         protected override void Seed(CustomerContext context)
