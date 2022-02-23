@@ -1,18 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Web;
+using System.Text;
+using DataAccess.Models;
 
-namespace ManagmentSystem.Models
+namespace BusinessLogic
 {
-    public class CustomerContext : DbContext
-    {
-        public DbSet<Customer> Customers { get; set; }
-        public DbSet<Role> Roles { get; set; }
-    }
-
-    public class DBInitializer : DropCreateDatabaseAlways<CustomerContext>
+    public class DBInitializer : System.Data.Entity.DropCreateDatabaseAlways<CustomerContext>
     {
         protected override void Seed(CustomerContext context)
         {

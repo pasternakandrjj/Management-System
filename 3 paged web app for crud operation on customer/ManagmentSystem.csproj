@@ -132,11 +132,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\PagingHelpers.cs" />
-    <Compile Include="Models\Customer.cs" />
-    <Compile Include="Models\CustomerContext.cs" />
-    <Compile Include="Models\Login.cs" />
-    <Compile Include="Models\Register.cs" />
-    <Compile Include="Models\Role.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -178,6 +173,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -191,6 +187,12 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BL\BL.csproj">
+      <Project>{39eeec78-a01e-4da6-ad19-775a7c0a51fd}</Project>
+      <Name>BL</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

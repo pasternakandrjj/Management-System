@@ -1,26 +1,34 @@
-﻿using ManagmentSystem.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+using BusinessLogic.Services.Interfaces;
+using BusinessLogic;
 
 namespace ManagmentSystem.Controllers
 {
     public class HomeController : Controller
     {
         CustomerContext customerContext = new CustomerContext();
+        private readonly ILoginService _iLoginService;
+
+        public HomeController(ILoginService iLoginService)
+        {
+            _iLoginService = iLoginService;
+        }
+
         public ActionResult Index(int page = 1)
         {
             int pageSize = 4;
-            IEnumerable<Customer> phonesPerPages = customerContext.Customers
+            IEnumerable<Customer> customersPerPages = customerContext.Customers
                 .OrderBy(x => x.Id)
                 .Skip((page - 1) * pageSize)
                 .Take(pageSize);
             PageInfo pageInfo = new PageInfo { PageNumber = page, PageSize = pageSize, TotalItems = customerContext.Customers.Count() };
-            IndexViewModel ivm = new IndexViewModel { PageInfo = pageInfo, Customers = phonesPerPages };
+            IndexViewModel ivm = new IndexViewModel { PageInfo = pageInfo, Customers = customersPerPages };
             return View(ivm);
         }
 

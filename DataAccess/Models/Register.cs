@@ -4,12 +4,10 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace ManagmentSystem.Models
+namespace DataAccess.Models
 {
-    public class Customer
+    public class Register
     {
-        public int Id { get; set; }
-
         [Required]
         public string FirstName { get; set; }
 
@@ -30,26 +28,5 @@ namespace ManagmentSystem.Models
         [StringLength(20, MinimumLength = 5, ErrorMessage = "Password length > 5 && < 20")]
         [DataType(DataType.Password)]
         public string Password { get; set; }//add hash
-
-        public bool IsDisabled { get; set; }
-
-        public Role RoleID { get; set; }
-    }
-
-    public class PageInfo
-    {
-        public int PageNumber { get; set; }
-        public int PageSize { get; set; }
-        public int TotalItems { get; set; }
-        public int TotalPages
-        {
-            get { return (int)Math.Ceiling((decimal)TotalItems / PageSize); }
-        }
-    }
-
-    public class IndexViewModel
-    {
-        public IEnumerable<Customer> Customers { get; set; }
-        public PageInfo PageInfo { get; set; }
     }
 }

@@ -1,13 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
-namespace ManagmentSystem.Models
+namespace DataAccess.Models
 {
-    public class Register
+    public class Customer
     {
+        [Key, Column(Order = 0)]
+        public int Id { get; set; }
+
         [Required]
         public string FirstName { get; set; }
 
@@ -15,6 +19,7 @@ namespace ManagmentSystem.Models
         public string LastName { get; set; }
 
         [Required]
+        [Key]
         [RegularExpression(@"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}", ErrorMessage = "Enter valid email")]
         public string Email { get; set; }
 
@@ -28,5 +33,10 @@ namespace ManagmentSystem.Models
         [StringLength(20, MinimumLength = 5, ErrorMessage = "Password length > 5 && < 20")]
         [DataType(DataType.Password)]
         public string Password { get; set; }//add hash
+
+        public bool IsDisabled { get; set; }
+
+        [ForeignKey("RoleID")]
+        public Role RoleID { get; set; }
     }
 }
